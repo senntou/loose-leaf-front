@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import {NotePanel} from "./NotePanel";
-
-type File = {
-    title: string,
-    comment: string,
-}
+import { NoteType } from "../types/MainContentTypes";
 
 export const NoteListPage = () => {
 
-    const [ files, setFiles] = useState<File[]>([]);
+    const [ files, setFiles] = useState<NoteType[]>([]);
     
     useEffect( () => {
         fetch('http://localhost:3000/api')
@@ -29,7 +25,7 @@ export const NoteListPage = () => {
             <ul className="grid w-full p-10">
                 { files.map( (file, index) => (
                     <li className="w-full" key={index}>
-                        <NotePanel title={file.title} comment={file.comment}/>
+                        <NotePanel file={file}/>
                         <br/>
                     </li>
                 ))}

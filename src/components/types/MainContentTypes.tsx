@@ -1,4 +1,5 @@
-export type NotePanelProps = {
+export type NoteType = {
+    id: string,
     title: string,
-    comment : string,
+    comment: string,
 }
