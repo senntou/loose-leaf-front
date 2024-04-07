@@ -1,21 +1,12 @@
-import { useContext } from "react";
-import { MainContentSelectorType } from "../types/MainContentSelectorType";
-import { MainContentSelectorContext } from "../../context/MainContentSelectorContext";
+import { useNavigate } from "react-router-dom";
 
-const useSetMainContentSelector = (page : MainContentSelectorType) => {
-    const mainContentSelectorContext = useContext(MainContentSelectorContext);
-    if(mainContentSelectorContext === undefined) {
-        return () => {};
+
+const SideButton = (props : {children:string, path:string} ) => {
+
+    const navigate = useNavigate();
+    const changeMainContent = () => {
+        navigate(props.path);  
     }
-    const {setMainContentSelector} = mainContentSelectorContext;
-
-    return () => {setMainContentSelector(page)};
-}
-
-
-const SideButton = (props : {children:string, page:MainContentSelectorType} ) => {
-
-    const changeMainContent = useSetMainContentSelector(props.page);
     return (
         <div className="flex h-10 p-3 ml-3 space-x-1 bg-gray-400 hover:bg-gray-700 rounded-full items-center" onClick={changeMainContent}>
             <img className="max-h-7 rounded-full -ml-1" src="/imgs/home.jpg" alt="home" />
@@ -34,8 +25,8 @@ export const SideBar = () => {
             </div>
 
             <div className="flex flex-col items-start w-[14rem] space-y-2">
-                <SideButton page='NoteList'>Home</SideButton>
-                <SideButton page='NoteViews'>Note</SideButton>
+                <SideButton path="/">Home</SideButton>
+                <SideButton path="/note">Note</SideButton>
             </div>
                         
         </div>

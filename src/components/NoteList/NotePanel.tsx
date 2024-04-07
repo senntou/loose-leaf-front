@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { NoteType } from "../types/MainContentTypes";
-import { MainContentSelectorContext } from "../../context/MainContentSelectorContext";
-import { NoteViewContext } from "../../context/NoteViewContext";
+import { useNavigate } from "react-router-dom";
 
 const Icon = () => {
     return (
@@ -30,17 +28,10 @@ const Comment = (props : {children : string}) => {
 
 export const NotePanel = (props: {file : NoteType}) => {
 
-    const mainContentSelectorContext = useContext(MainContentSelectorContext);
-    const noteViewContext = useContext(NoteViewContext);
+    const navigate = useNavigate();
 
     const changeToNoteView = () => {
-        if(mainContentSelectorContext === undefined || noteViewContext === undefined) return ;
-
-        const {setMainContentSelector} = mainContentSelectorContext;
-        const {setNoteView} = noteViewContext
-
-        setMainContentSelector('NoteViews');
-        setNoteView(props.file.id)
+        navigate("/note/" + props.file.id);
     }
 
     return (

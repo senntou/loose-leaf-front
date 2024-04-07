@@ -1,19 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NoteType } from "./types/MainContentTypes";
-import { NoteViewContext } from "../context/NoteViewContext";
+import { useParams } from "react-router-dom";
 
 export const NoteView = () => {
 
     const [file, setFile] = useState<NoteType | null>(null);
-    const context = useContext(NoteViewContext);
-
-    const noteId = (context === undefined) ? '' : context.noteView;
+    const {noteId} = useParams();
 
     useEffect(() => {
-        if(context === undefined){
-            return ;
-        }
-
+        console.log('note id is below')
+        console.log(noteId);
         fetch('http://localhost:3000/api/?fileId=' + noteId)
         .then( (res) => res.json() )
         .then( (json) => {
