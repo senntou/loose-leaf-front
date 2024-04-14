@@ -1,21 +1,21 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { MainContent } from './components/MainContent';
 import { SideBarContainer } from './components/Side/SideBarContainer';
 import { Spacer } from './components/Spacer';
-import { MainContentSelectorProvider } from './context/MainContentSelectorContext';
-import { NoteViewContextProvider } from './context/NoteViewContext';
+import { UserIdContextProvider } from './context/UserIdContext';
 
 function App() {
 
   return (
     <div className="App flex justify-center">
-      <MainContentSelectorProvider>
-        <NoteViewContextProvider>
+      <BrowserRouter>
+        <UserIdContextProvider>
           <SideBarContainer/>
           <MainContent/>
           <Spacer/>
-        </NoteViewContextProvider>
-      </MainContentSelectorProvider>
+        </UserIdContextProvider>
+      </BrowserRouter>
     </div>
   );
 }

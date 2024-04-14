@@ -12,9 +12,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({baseDirectory: __dirname, recommendedConfig: pluginJs.configs.recommended});
 
-export default [
+const opt =  [
   {languageOptions: { globals: globals.browser }},
   ...compat.extends("standard-with-typescript"),
   ...tseslint.configs.recommended,
   pluginReactConfig,
 ];
+export default opt;

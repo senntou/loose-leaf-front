@@ -1,36 +1,17 @@
-import { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
 import { NoteListPage } from "./NoteList/NoteListPage";
-import { NoteView } from "./NoteView";
-import { MainContentSelectorContext } from "../context/MainContentSelectorContext";
+import { NoteViewContainer } from "./NoteViewer/NoteViewContainer";
+import { LoginView } from "./Auth/LoginView";
 
 export const MainContent = () => {
 
-    const mainContentSelectorContext = useContext(MainContentSelectorContext);
-    if(mainContentSelectorContext === undefined){
-        return (
-            <div/>
-        )
-    }
-
-    const {mainContentSelector} = mainContentSelectorContext;
-    switch(mainContentSelector){
-        case 'NoteList':
-            return (
-                <div className="w-[54rem]">
-                    <NoteListPage/>
-                </div>
-            );
-        case 'NoteViews':
-            return (
-                <div className="w-[54rem]">
-                    <NoteView/>
-                </div>
-            );
-    }
-
     return (
-        <div className="w-[54rem]">
-            <NoteListPage/>
+        <div className="w-[54rem] min-w-[54rem]">
+            <Routes>
+                <Route path="/" element={<NoteListPage/>}/>
+                <Route path="/note/:noteId" element={<NoteViewContainer/>}/>
+                <Route path="/login" element={<LoginView/>}/>
+            </Routes>
         </div>
     );
 }

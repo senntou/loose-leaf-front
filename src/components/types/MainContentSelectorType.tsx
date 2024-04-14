@@ -1,1 +1,0 @@
-export type MainContentSelectorType = 'NoteList' | 'NoteViews';

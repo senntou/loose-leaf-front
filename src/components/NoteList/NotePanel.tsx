@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { NoteType } from "../types/MainContentTypes";
-import { MainContentSelectorContext } from "../../context/MainContentSelectorContext";
-import { NoteViewContext } from "../../context/NoteViewContext";
+import { useNavigate } from "react-router-dom";
 
 const Icon = () => {
     return (
@@ -30,21 +28,14 @@ const Comment = (props : {children : string}) => {
 
 export const NotePanel = (props: {file : NoteType}) => {
 
-    const mainContentSelectorContext = useContext(MainContentSelectorContext);
-    const noteViewContext = useContext(NoteViewContext);
+    const navigate = useNavigate();
 
     const changeToNoteView = () => {
-        if(mainContentSelectorContext === undefined || noteViewContext === undefined) return ;
-
-        const {setMainContentSelector} = mainContentSelectorContext;
-        const {setNoteView} = noteViewContext
-
-        setMainContentSelector('NoteViews');
-        setNoteView(props.file.id)
+        navigate("/note/" + props.file.id);
     }
 
     return (
-        <div className="flex h-48 w-full p-2 bg-white hover:bg-gray-50 rounded-2xl shadow-2xl" onClick={changeToNoteView}>
+        <button className="flex h-48 w-full p-2 bg-white hover:bg-gray-50 rounded-2xl shadow-2xl" onClick={changeToNoteView}>
             <Icon/>
             <div className="flex flex-col mx-5">
                 <Title>
@@ -54,6 +45,6 @@ export const NotePanel = (props: {file : NoteType}) => {
                     {props.file.comment}
                 </Comment>
             </div>
-        </div>
+        </button>
     );
 }
