@@ -35,7 +35,7 @@ export const NotePanel = (props: {file : NoteType}) => {
     }
 
     return (
-        <div className="flex h-48 w-full p-2 bg-white hover:bg-gray-50 rounded-2xl shadow-2xl" onClick={changeToNoteView}>
+        <button className="flex h-48 w-full p-2 bg-white hover:bg-gray-50 rounded-2xl shadow-2xl" onClick={changeToNoteView}>
             <Icon/>
             <div className="flex flex-col mx-5">
                 <Title>
@@ -45,6 +45,6 @@ export const NotePanel = (props: {file : NoteType}) => {
                     {props.file.comment}
                 </Comment>
             </div>
-        </div>
+        </button>
     );
 }

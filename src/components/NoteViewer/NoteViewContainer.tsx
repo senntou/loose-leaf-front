@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { NoteType } from "./types/MainContentTypes";
+import { NoteType } from "../types/MainContentTypes";
 import { useParams } from "react-router-dom";
+import { NoteView } from "./NoteView";
 
-export const NoteView = () => {
+export const NoteViewContainer = () => {
 
     const [file, setFile] = useState<NoteType | null>(null);
     const {noteId} = useParams();
 
     useEffect(() => {
-        console.log('note id is below')
-        console.log(noteId);
         fetch('http://localhost:3000/api/?fileId=' + noteId)
         .then( (res) => res.json() )
         .then( (json) => {
@@ -18,9 +17,9 @@ export const NoteView = () => {
     },[]);
 
     return (
-        <div className="h-full w-full bg-gray-300">
-            <h1>hello worlds</h1>
-            <p>{file && file.id}</p>
+        <div className="flex flex-col justify-center h-full w-full bg-gray-300">
+            <p>{file && file.title}</p>
+            <NoteView/>
         </div>
     );
 }
