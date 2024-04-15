@@ -11,7 +11,7 @@ export const UserSessionView = () => {
     }, [context]);
 
     return (
-        <div className="flex bottom-0 h-10 w-full border">
+        <div className="flex bottom-0 h-10 w-full border bg-white">
             <p className="m-auto">{id}</p>
         </div>
     );

@@ -8,7 +8,7 @@ import { UserIdContextProvider } from './context/UserIdContext';
 function App() {
 
   return (
-    <div className="App flex justify-center">
+    <div className="App flex justify-center bg-cyan-50">
       <BrowserRouter>
         <UserIdContextProvider>
           <SideBarContainer/>

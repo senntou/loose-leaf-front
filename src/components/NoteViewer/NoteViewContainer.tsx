@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NoteType } from "../types/MainContentTypes";
+import { NoteType } from "../../types/MainContentTypes";
 import { useParams } from "react-router-dom";
 import { NoteView } from "./NoteView";
 
