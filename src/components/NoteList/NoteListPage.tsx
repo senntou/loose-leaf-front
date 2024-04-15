@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import {NotePanel} from "./NotePanel";
-import { NoteType } from "../types/MainContentTypes";
+import { NoteType } from "../../types/MainContentTypes";
 
 export const NoteListPage = () => {
 
@@ -16,7 +16,7 @@ export const NoteListPage = () => {
     },[]);
 
     return (
-        <div className="flex flex-col w-full max-w-full bg-gray-300 border-black border-double border-8 rounded-3xl">
+        <div className="flex flex-col w-full max-w-full bg-gray-50 border-2 rounded-3xl">
 
             <div className="flex">
                 <h1 className="m-10 text-4xl font-extrabold">一覧</h1>

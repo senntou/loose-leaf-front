@@ -41,7 +41,7 @@ export const MyInput = (props : MyInputPropsType) => {
 }
 
 
-export const LoginView = () => {
+export const SignupView = () => {
 
     const [values ,setValues] = useState<InputType>({id:"", password:""});
     const context = useContext(UserIdContext);
@@ -50,14 +50,13 @@ export const LoginView = () => {
 
     const handleSubmit : FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/auth/login",{
+        fetch("http://localhost:3000/auth/signup",{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
             credentials: "include",
             body: JSON.stringify({id: values.id, password: values.password}),
-            redirect:"follow"
         })
         .then( (res) => {
             console.log(res);
@@ -68,15 +67,11 @@ export const LoginView = () => {
         });
     }
 
-    const navigateToSignUpPage = () => {
-        navigate("/signup");
-    }
-
     return (
         <div className="flex flex-col justify-start h-[24rem] w-[30rem] items-center bg-gray-100 rounded-3xl">
 
             <h1 className="my-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900">
-                Sign in
+                Sign up
             </h1>
 
             <form onSubmit={handleSubmit}>
@@ -87,8 +82,6 @@ export const LoginView = () => {
                     type="submit"
                 >Sign in</button>
             </form>
-
-            <a onClick={navigateToSignUpPage} className=" text-blue-500 hover:cursor-pointer">アカウントを持っていません</a>
 
         </div>
     );

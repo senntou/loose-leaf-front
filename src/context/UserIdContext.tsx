@@ -18,7 +18,6 @@ export const UserIdContextProvider = (props : {children:ReactNode}) => {
         })
         .then( (res) => res.json())
         .then( (json) => {
-            console.log(json);
             if(json.id !== undefined) setUserId(json.id);
             else setUserId(null);
         });  
