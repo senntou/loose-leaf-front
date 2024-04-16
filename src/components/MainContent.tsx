@@ -9,7 +9,7 @@ import { SignupView } from "./Auth/SignupView";
 export const MainContent = () => {
 
     return (
-        <div className="flex justify-center items-center w-[54rem]">
+        <div className="flex h-full justify-center items-center w-full md:w-[54rem]">
             <Routes>
                 <Route path="/" element={<NoteListPage/>}/>
                 <Route path="/note/:noteId" element={<NoteViewContainer/>}/>

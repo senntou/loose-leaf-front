@@ -12,7 +12,7 @@ export const UserIdContextProvider = (props : {children:ReactNode}) => {
     const [userId, setUserId] = useState<string  | null>(null);
 
     const fetchUserId = () => {
-        fetch("http://localhost:3000/auth/session",{
+        fetch("auth/session",{
             method:"GET",
             credentials:"include"
         })

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserIdContext } from "../../context/UserIdContext";
+import { UserIdContext } from "../../../context/UserIdContext";
 
 const classNames = "flex justify-center h-10 w-[7rem] items-center bg-gray-50 border rounded-3xl hover:bg-gray-200"
 
@@ -24,7 +24,7 @@ const LogoutButton = () => {
     if(context === undefined) return (<div/>);
 
     const logout = () => {
-        fetch("http://localhost:3000/auth/logout", {
+        fetch("auth/logout", {
             method:"POST",
             credentials:"include",
         }).then(() => {

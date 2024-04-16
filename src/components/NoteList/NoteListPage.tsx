@@ -8,7 +8,7 @@ export const NoteListPage = () => {
     const [ files, setFiles] = useState<NoteType[]>([]);
     
     useEffect( () => {
-        fetch('http://localhost:3000/api')
+        fetch('/api')
         .then( (res) => res.json() )
         .then( (json) => {
             setFiles(json.files);
@@ -19,10 +19,10 @@ export const NoteListPage = () => {
         <div className="flex flex-col w-full max-w-full bg-gray-50 border-2 rounded-3xl">
 
             <div className="flex">
-                <h1 className="m-10 text-4xl font-extrabold">一覧</h1>
+                <h1 className="m-10 text-2xl md:text-4xl font-extrabold">一覧</h1>
             </div>
 
-            <ul className="grid w-full p-10">
+            <ul className="grid max-w-full w-full p-2 md:p-10">
                 { files.map( (file, index) => (
                     <li className="w-full" key={index}>
                         <NotePanel file={file}/>
