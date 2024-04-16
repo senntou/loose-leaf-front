@@ -62,7 +62,7 @@ export const NotePostPage = () => {
         submitData.append("file", fileRef.current.files[0]);
 
         try{
-            const res = await axios.post(`http://localhost:3000/api`, submitData,{
+            const res = await axios.post(`api`, submitData,{
                 withCredentials: true,
                 headers: {
                     'content-type': 'multipart/form-data',

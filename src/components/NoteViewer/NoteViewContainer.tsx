@@ -9,7 +9,7 @@ export const NoteViewContainer = () => {
     const {noteId} = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/?fileId=' + noteId)
+        fetch('api/?fileId=' + noteId)
         .then( (res) => res.json() )
         .then( (json) => {
             if(json.files.length !== 0) setFile(json.files[0]);

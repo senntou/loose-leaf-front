@@ -20,7 +20,7 @@ export const UserSessionView = () => {
             let res = window.confirm("ログアウトしますか？");
             if(!res) return ;
 
-            fetch("http://localhost:3000/auth/logout", {
+            fetch("auth/logout", {
                 method:"POST",
                 credentials:"include",
             }).then(() => {

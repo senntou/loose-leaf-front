@@ -16,7 +16,7 @@ export const NoteSearchPage = () => {
     const handleSubmit : FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:3000/api/?fileName=' + searchTitle)
+        fetch('api/?fileName=' + searchTitle)
         .then( (res) => res.json() )
         .then( (json) => {
             setFiles(json.files);

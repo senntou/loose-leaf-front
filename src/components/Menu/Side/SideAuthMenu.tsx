@@ -24,7 +24,7 @@ const LogoutButton = () => {
     if(context === undefined) return (<div/>);
 
     const logout = () => {
-        fetch("http://localhost:3000/auth/logout", {
+        fetch("auth/logout", {
             method:"POST",
             credentials:"include",
         }).then(() => {

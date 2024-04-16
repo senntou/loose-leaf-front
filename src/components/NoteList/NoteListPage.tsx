@@ -8,7 +8,7 @@ export const NoteListPage = () => {
     const [ files, setFiles] = useState<NoteType[]>([]);
     
     useEffect( () => {
-        fetch('http://localhost:3000/api')
+        fetch('/api')
         .then( (res) => res.json() )
         .then( (json) => {
             setFiles(json.files);

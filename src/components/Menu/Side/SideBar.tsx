@@ -1,4 +1,3 @@
-import { SideAuthMenu } from "./SideAuthMenu";
 import { UserSessionView } from "../UserSessionView";
 import { SideMainMenu } from "./SideMainMenu";
 
