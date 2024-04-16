@@ -68,10 +68,6 @@ export const LoginView = () => {
         });
     }
 
-    const navigateToSignUpPage = () => {
-        navigate("/signup");
-    }
-
     return (
         <div className="flex flex-col justify-start h-[24rem] w-[30rem] items-center bg-gray-100 rounded-3xl">
 
@@ -88,7 +84,7 @@ export const LoginView = () => {
                 >Sign in</button>
             </form>
 
-            <a onClick={navigateToSignUpPage} className=" text-blue-500 hover:cursor-pointer">アカウントを持っていません</a>
+            <a href="/signup" className=" text-blue-600">アカウントを持っていません</a>
 
         </div>
     );

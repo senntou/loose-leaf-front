@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserIdContext } from "../../context/UserIdContext";
+import { UserIdContext } from "../../../context/UserIdContext";
 
 const classNames = "flex justify-center h-10 w-[7rem] items-center bg-gray-50 border rounded-3xl hover:bg-gray-200"
 
