@@ -31,7 +31,7 @@ export const NoteSearchPage = () => {
                 onSubmit={handleSubmit}
             >
                 <AiOutlineSearch size="2rem"/>
-                <input onChange={handleInputChange} className="h-full w-full bg-transparent focus:outline-none"/>
+                <input onChange={handleInputChange} placeholder="タイトルを入力" className="h-full w-full bg-transparent focus:outline-none"/>
             </form>
             
             <ul className="grid w-full p-10">

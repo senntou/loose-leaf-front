@@ -59,7 +59,7 @@ export const SignupView = () => {
             body: JSON.stringify({id: values.id, password: values.password}),
         })
         .then( (res) => {
-            console.log(res);
+            // console.log(res);
             if(res.status === 200){
                 context.fetchUserId();
                 navigate("/");
