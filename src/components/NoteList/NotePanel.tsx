@@ -24,7 +24,7 @@ const Title = (props : {author:string, children : string}) => {
 }
 const Comment = (props : {children : string}) => {
     return (
-        <div className="flex justify-start ">
+        <div className="flex justify-start mt-2">
             <p className="text-xs md:text-base">{props.children}</p>
         </div>
     );
@@ -43,7 +43,7 @@ export const NotePanel = (props: {file : NoteType}) => {
             className="flex h-32 md:h-48 max-w-full w-full p-2 bg-white hover:bg-gray-50 rounded-2xl shadow-2xl" 
             onClick={changeToNoteView}
         >
-            <Icon/>
+            {/* <Icon/> */}
             <div className="flex flex-col max-w-full mx-5">
                 <Title author={props.file.author}>
                     {props.file.title}
