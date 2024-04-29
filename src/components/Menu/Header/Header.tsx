@@ -9,6 +9,7 @@ export const Header = () => {
                 <PageButton path="/" icon={<AiOutlineHome size="1.5rem"/>}>Home</PageButton>
                 <PageButton path="/search" icon={<AiOutlineSearch size="1.5rem"/>}>Search</PageButton>
                 <PageButton path="/post" icon={<AiOutlineInbox size="1.5rem"/>}>Post</PageButton>
+                <PageButton path="/my" icon={<AiOutlineHome size="1.5rem"/>}>My Notes</PageButton>        
                 <UserSessionView/>
             </div>
         </div>

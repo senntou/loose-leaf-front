@@ -1,6 +1,6 @@
 import React, { FormEventHandler, useContext, useState } from "react";
 import { UserIdContext } from "../../context/UserIdContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type InputType = {
     id:string,
@@ -45,12 +45,13 @@ export const SignupView = () => {
 
     const [values ,setValues] = useState<InputType>({id:"", password:""});
     const context = useContext(UserIdContext);
+    const {errorMessage} = useParams();
     const navigate = useNavigate();
     if(context === undefined) return (<div/>);
 
     const handleSubmit : FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
-        fetch("auth/signup",{
+        fetch("http://localhost:3000/auth/signup",{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -64,6 +65,14 @@ export const SignupView = () => {
                 context.fetchUserId();
                 navigate("/");
             }
+
+            else if(res.status === 400){
+                res.json().then( rs => {
+                    navigate("/signup/" + rs.error);
+                })
+            }
+
+            else navigate("/signup");
         });
     }
 
@@ -74,13 +83,15 @@ export const SignupView = () => {
                 Sign up
             </h1>
 
+            <p className="text-medium text-red-600">{errorMessage}</p>
+
             <form onSubmit={handleSubmit}>
                 <MyInput values={values} setValues={setValues} content="id" />
                 <MyInput values={values} setValues={setValues} content="password" />
                 <button 
                     className="my-10 px-10 bg-gray-300 hover:bg-gray-400 rounded-xl" 
                     type="submit"
-                >Sign in</button>
+                >Sign up</button>
             </form>
 
         </div>
