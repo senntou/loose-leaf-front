@@ -5,6 +5,7 @@ import { LoginView } from "./Auth/LoginView";
 import { NotePostPage } from "./Post/NotePostPage";
 import { NoteSearchPage } from "./NoteList/NoteSearchPage";
 import { SignupView } from "./Auth/SignupView";
+import { MyNoteListPage } from "./MyNoteList/MyNoteListPage";
 
 export const MainContent = () => {
 
@@ -14,8 +15,10 @@ export const MainContent = () => {
                 <Route path="/" element={<NoteListPage/>}/>
                 <Route path="/note/:noteId" element={<NoteViewContainer/>}/>
                 <Route path="/post" element={<NotePostPage/>}/>
+                <Route path="/my" element={<MyNoteListPage/>}/>
                 <Route path="/login" element={<LoginView/>}/>
                 <Route path="/signup" element={<SignupView/>}/>
+                <Route path="/signup/:errorMessage" element={<SignupView/>}/>
                 <Route path="/search" element={<NoteSearchPage/>}/>
             </Routes>
         </div>
