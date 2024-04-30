@@ -11,7 +11,7 @@ import { NoteEditPage } from "./Post/NoteEditPage";
 export const MainContent = () => {
 
     return (
-        <div className="flex h-full justify-center items-center w-full min-w-full md:min-w-[54rem] md:w-[54rem]">
+        <div className="flex h-4/5 md:h-full my-auto md:my-0 justify-center items-center w-full min-w-full md:min-w-[54rem] md:w-[54rem]">
             <Routes>
                 <Route path="/" element={<NoteListPage/>}/>
                 <Route path="/note/:noteId" element={<NoteViewContainer/>}/>
