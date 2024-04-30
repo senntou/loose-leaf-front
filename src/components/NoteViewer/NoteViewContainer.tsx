@@ -15,7 +15,7 @@ export const NoteViewContainer = () => {
         .then( (json) => {
             if(json.files && json.files.length !== 0) setFile(json.files[0]);
         });
-    },[]);
+    },[noteId]);
 
     return (
         <div className="flex flex-col justify-start items-start px-10 h-full w-full bg-gray-100">

@@ -13,7 +13,7 @@ export const NoteList = (props : {searchTitle: string}) => {
         .then( (json) => {
             setFiles(json.files);
         });
-    },[]);
+    },[props.searchTitle]);
 
     return (
         <ul className="grid max-w-full w-full p-2 md:p-10">
