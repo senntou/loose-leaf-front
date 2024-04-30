@@ -1,6 +1,7 @@
 import React, { FormEventHandler, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import sweetalert from 'sweetalert';
 
 type InputType = {
     title: string,
@@ -70,7 +71,10 @@ export const NotePostPage = () => {
             });
             if(res.status === 200) {
                 navigate("/");
-                alert("POSTに成功しました");
+                sweetalert({
+                    text: "POSTに成功しました",
+                    icon: "success"
+                });
             }
         } catch (e) {
             if(isAxiosError(e)){
