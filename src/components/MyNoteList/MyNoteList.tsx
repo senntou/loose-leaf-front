@@ -19,7 +19,7 @@ const Buttons : React.FC<{file : NoteType}> = (props) => {
         }).then( (result) => {
             if(!result) return ;
             if(result){
-                fetch("http://localhost:3000/api/?fileId=" + props.file.id, {
+                fetch("/api/?fileId=" + props.file.id, {
                     method: "DELETE",
                     credentials: "include"
                 }).then((res) => {
