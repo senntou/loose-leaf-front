@@ -2,49 +2,13 @@ import React, { FormEventHandler, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import sweetalert from 'sweetalert';
-
-type InputType = {
-    title: string,
-    comment: string
-}
-type MyInputPropsType = {
-    values:InputType,
-    setValues: React.Dispatch<React.SetStateAction<InputType>>,
-    content: 'title' | 'comment'
-}
-
-export const MyInput = (props : MyInputPropsType) => {
-
-    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-        const target = e.target;
-        
-        switch(props.content){
-            case "title":
-                props.setValues( (prev) => ({...prev, title:target.value}));
-                break;
-            case "comment":
-                props.setValues( (prev) => ({...prev, comment:target.value}));
-                break;
-        }
-    }
-
-    return (
-        <div className="flex flex-col items-start my-1">
-            <label className="font-semibold text-xl">{props.content}</label>
-            <input 
-                className="w-[18rem]"
-                type="text" 
-                value={props.values[props.content]}
-                onChange={handleInputChange}
-            ></input>
-        </div>
-    );
-}
-
+import { MyCommentInput, MyTitleInput } from "../Form/InputForms";
 
 export const NotePostPage = () => {
 
-    const [values, setValues] = useState<InputType>({title:"", comment:""});
+    const [title, setTitle] = useState<string>("");
+    const [comment, setComment] = useState<string>("");
+
     const fileRef = React.createRef<HTMLInputElement>();
     const navigate = useNavigate();
 
@@ -58,8 +22,8 @@ export const NotePostPage = () => {
             return ;
         }
 
-        submitData.append("title", values.title);
-        submitData.append("comment", values.comment);
+        submitData.append("title", title);
+        submitData.append("comment", comment);
         submitData.append("file", fileRef.current.files[0]);
 
         try{
@@ -70,10 +34,11 @@ export const NotePostPage = () => {
                 },
             });
             if(res.status === 200) {
-                navigate("/");
                 sweetalert({
                     text: "POSTに成功しました",
                     icon: "success"
+                }).then( () => {
+                    navigate("/");
                 });
             }
         } catch (e) {
@@ -95,8 +60,8 @@ export const NotePostPage = () => {
 
                 <input type="file" name="file" ref={fileRef}/>
 
-                <MyInput values={values} setValues={setValues} content="title"/>
-                <MyInput values={values} setValues={setValues} content="comment"/>
+                <MyTitleInput value={title} setValue={setTitle} />
+                <MyCommentInput value={comment} setValue={setComment} />
 
                 <button 
                     className="my-10 px-10 bg-gray-300 hover:bg-gray-400 rounded-xl" 

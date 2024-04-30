@@ -6,6 +6,7 @@ import { NotePostPage } from "./Post/NotePostPage";
 import { NoteSearchPage } from "./NoteList/NoteSearchPage";
 import { SignupView } from "./Auth/SignupView";
 import { MyNoteListPage } from "./MyNoteList/MyNoteListPage";
+import { NoteEditPage } from "./Post/NoteEditPage";
 
 export const MainContent = () => {
 
@@ -15,6 +16,7 @@ export const MainContent = () => {
                 <Route path="/" element={<NoteListPage/>}/>
                 <Route path="/note/:noteId" element={<NoteViewContainer/>}/>
                 <Route path="/post" element={<NotePostPage/>}/>
+                <Route path="/edit/:noteId" element={<NoteEditPage/>}/>
                 <Route path="/my" element={<MyNoteListPage/>}/>
                 <Route path="/login" element={<LoginView/>}/>
                 <Route path="/signup" element={<SignupView/>}/>

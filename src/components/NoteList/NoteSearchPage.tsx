@@ -24,10 +24,10 @@ export const NoteSearchPage = () => {
     }
 
     return(
-        <div className="p-5 h-full w-full border border-black bg-gray-50 rounded-3xl">
+        <div className="p-5 h-full w-full border border-black bg-gray-50 rounded-3xl overflow-auto">
 
             <form 
-                className="flex justify-start items-center space-x-2 px-5 h-10 w-full bg-gray-300 rounded-3xl"
+                className="flex justify-start items-center space-x-2 px-5 h-10 w-full bg-gray-300 rounded-3xl sticky top-0"
                 onSubmit={handleSubmit}
             >
                 <AiOutlineSearch size="2rem"/>

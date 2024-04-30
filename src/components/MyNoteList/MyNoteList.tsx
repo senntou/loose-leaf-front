@@ -4,8 +4,11 @@ import { NotePanel } from "../NoteList/NotePanel";
 import { UserIdContext } from "../../context/UserIdContext";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import sweetAlert from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const Buttons : React.FC<{file : NoteType}> = (props) => {
+
+    const navigate = useNavigate();
 
     const deleteFile = () => {
 
@@ -15,14 +18,12 @@ const Buttons : React.FC<{file : NoteType}> = (props) => {
             icon: "warning",
         }).then( (result) => {
             if(!result) return ;
-            console.log("ok");
             if(result){
-                console.log("ok2");
                 fetch("http://localhost:3000/api/?fileId=" + props.file.id, {
                     method: "DELETE",
                     credentials: "include"
                 }).then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     if(res.status === 200) {
                         sweetAlert({
                             text: "削除に成功しました",
@@ -39,11 +40,15 @@ const Buttons : React.FC<{file : NoteType}> = (props) => {
             }
         });
     }
+    const navigateToEdit = () => {
+        navigate("/edit/" + props.file.id);
+    }
 
     return (
         <div className="flex flex-col h-32 md:h-48 mr-4 justify-around w-10">
             <button 
                 className="h-8 md:h-10 w-8 md:w-10 rounded-full bg-blue-500 hover:bg-blue-700"
+                onClick={navigateToEdit}
             >
                 {<AiOutlineEdit size="1.5rem" className="mx-auto my-auto"/>}
             </button>
@@ -71,7 +76,6 @@ export const MyNoteList = () => {
         .then( (res) => res.json() )
         .then( (json) => {
             setFiles(json.files);
-            console.log(context.userId);
         });
     },[context]);
 
