@@ -1,5 +1,4 @@
 import React, { FormEventHandler, useState } from "react";
-import axios, { isAxiosError } from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import sweetalert from 'sweetalert';
 import { MyCommentInput, MyTitleInput } from "../Form/InputForms";
@@ -36,34 +35,6 @@ export const NoteEditPage = () => {
                 })
             }
         })
-        
-        // const submitData = new FormData();
-
-        // submitData.append("title", title);
-        // submitData.append("comment", comment);
-        // submitData.append("file", fileRef.current.files[0]);
-
-        // try{
-        //     const res = await axios.post(`api`, submitData,{
-        //         withCredentials: true,
-        //         headers: {
-        //             'content-type': 'multipart/form-data',
-        //         },
-        //     });
-        //     if(res.status === 200) {
-        //         navigate("/");
-        //         sweetalert({
-        //             text: "POSTに成功しました",
-        //             icon: "success"
-        //         });
-        //     }
-        // } catch (e) {
-        //     if(isAxiosError(e)){
-        //         if(e.response && e.response.status === 400 && e.response.data.error) console.log(e.response.data.error);
-        //     }
-        // }
-
-        
     }
 
     return (
