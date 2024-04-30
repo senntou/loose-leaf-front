@@ -14,7 +14,7 @@ export const NoteEditPage = () => {
     const handleSubmit : FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:3000/api/edit', {
+        fetch('/api/edit', {
             method: "POST",
             credentials: "include",
             headers: {

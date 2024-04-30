@@ -51,7 +51,7 @@ export const SignupView = () => {
 
     const handleSubmit : FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/auth/signup",{
+        fetch("/auth/signup",{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
