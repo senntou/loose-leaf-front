@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserIdContext } from "../../context/UserIdContext";
 import { useNavigate } from "react-router-dom";
+import sweetalert from 'sweetalert';
 
 export const UserSessionView = () => {
 
@@ -17,15 +18,19 @@ export const UserSessionView = () => {
         if(!context) return ;
         // ログインしている場合
         if(context.userId){
-            let res = window.confirm("ログアウトしますか？");
-            if(!res) return ;
 
-            fetch("auth/logout", {
-                method:"POST",
-                credentials:"include",
-            }).then(() => {
-                context.fetchUserId();
-            });
+            sweetAlert({
+                text: "ログアウトしますか？",
+                icon: "warning"
+            })
+            .then( (answer) => {
+                fetch("auth/logout", {
+                    method:"POST",
+                    credentials:"include",
+                }).then(() => {
+                    context.fetchUserId();
+                });
+            })
         }
         // ログインしていない場合
         else {
